@@ -32,9 +32,14 @@ export function Hero({ unitCount }: { unitCount: number }) {
     { value: t.home.statResponseValue, label: t.home.statResponse, numeric: false },
   ];
 
+  /* `useReducedMotion` is false on the server, so the initial state is
+     serialised into the HTML. If the reduced-motion branch simply dropped the
+     animation props, the element would stay stuck at `opacity: 0` forever —
+     the hero would be invisible to exactly the people who asked for less
+     motion. So the reduced branch renders at the finished state instead. */
   const reveal = (delay: number) =>
     reduceMotion
-      ? {}
+      ? { initial: false as const, animate: { opacity: 1, y: 0 } }
       : {
           initial: { opacity: 0, y: 14 },
           animate: { opacity: 1, y: 0 },
@@ -106,7 +111,7 @@ export function Hero({ unitCount }: { unitCount: number }) {
 
         <motion.div
           {...(reduceMotion
-            ? {}
+            ? { initial: false as const, animate: { opacity: 1, scale: 1 } }
             : {
                 initial: { opacity: 0, scale: 0.98 },
                 animate: { opacity: 1, scale: 1 },
