@@ -1,0 +1,311 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "../styles/tokens.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Direction-scoped variants. Use sparingly — logical properties (ms/me, ps/pe,
+   start/end) cover almost everything. These exist for the few cases that must
+   flip a transform or a gradient angle. */
+@custom-variant rtl (&:where([dir="rtl"], [dir="rtl"] *));
+@custom-variant ltr (&:where([dir="ltr"], [dir="ltr"] *));
+
+/* ---------------------------------------------------------------------------
+   Theme: every Tailwind utility resolves back to a token in styles/tokens.css.
+   The shadcn semantic names (background, card, primary, …) are mapped onto the
+   Ghazara palette so the generated primitives inherit the identity.
+--------------------------------------------------------------------------- */
+@theme inline {
+  /* Brand scales — use these directly: bg-petrol-700, text-limestone-600, … */
+  --color-petrol-50: var(--gz-petrol-50);
+  --color-petrol-100: var(--gz-petrol-100);
+  --color-petrol-200: var(--gz-petrol-200);
+  --color-petrol-300: var(--gz-petrol-300);
+  --color-petrol-400: var(--gz-petrol-400);
+  --color-petrol-500: var(--gz-petrol-500);
+  --color-petrol-600: var(--gz-petrol-600);
+  --color-petrol-700: var(--gz-petrol-700);
+  --color-petrol-800: var(--gz-petrol-800);
+  --color-petrol-900: var(--gz-petrol-900);
+  --color-petrol-950: var(--gz-petrol-950);
+
+  --color-limestone-50: var(--gz-limestone-50);
+  --color-limestone-100: var(--gz-limestone-100);
+  --color-limestone-200: var(--gz-limestone-200);
+  --color-limestone-300: var(--gz-limestone-300);
+  --color-limestone-400: var(--gz-limestone-400);
+  --color-limestone-500: var(--gz-limestone-500);
+  --color-limestone-600: var(--gz-limestone-600);
+  --color-limestone-700: var(--gz-limestone-700);
+  --color-limestone-800: var(--gz-limestone-800);
+  --color-limestone-900: var(--gz-limestone-900);
+
+  --color-clay-50: var(--gz-clay-50);
+  --color-clay-100: var(--gz-clay-100);
+  --color-clay-300: var(--gz-clay-300);
+  --color-clay-500: var(--gz-clay-500);
+  --color-clay-600: var(--gz-clay-600);
+  --color-clay-700: var(--gz-clay-700);
+
+  --color-danger-50: var(--gz-danger-50);
+  --color-danger-500: var(--gz-danger-500);
+  --color-danger-700: var(--gz-danger-700);
+  --color-slate-tint-50: var(--gz-slate-50);
+  --color-slate-tint-500: var(--gz-slate-500);
+  --color-slate-tint-700: var(--gz-slate-700);
+
+  /* shadcn semantic surface */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Type */
+  --font-sans: var(--gz-family-body);
+  --font-body: var(--gz-family-body);
+  --font-display: var(--gz-family-display);
+  --font-mono: var(--gz-family-mono);
+  --font-heading: var(--gz-family-display);
+
+  --text-2xs: var(--gz-text-2xs);
+  --text-xs: var(--gz-text-xs);
+  --text-sm: var(--gz-text-sm);
+  --text-base: var(--gz-text-base);
+  --text-lg: var(--gz-text-lg);
+  --text-xl: var(--gz-text-xl);
+  --text-2xl: var(--gz-text-2xl);
+  --text-3xl: var(--gz-text-3xl);
+  --text-4xl: var(--gz-text-4xl);
+  --text-5xl: var(--gz-text-5xl);
+  --text-6xl: var(--gz-text-6xl);
+
+  --leading-flat: var(--gz-leading-flat);
+  --leading-tight: var(--gz-leading-tight);
+  --leading-snug: var(--gz-leading-snug);
+  --leading-normal: var(--gz-leading-normal);
+  --leading-loose: var(--gz-leading-loose);
+
+  --tracking-tighter: var(--gz-track-tighter);
+  --tracking-tight: var(--gz-track-tight);
+  --tracking-normal: var(--gz-track-normal);
+  --tracking-wide: var(--gz-track-wide);
+  --tracking-widest: var(--gz-track-widest);
+
+  /* Radius */
+  --radius-sm: var(--gz-radius-sm);
+  --radius-md: var(--gz-radius-md);
+  --radius-lg: var(--gz-radius-lg);
+  --radius-xl: var(--gz-radius-xl);
+  --radius-2xl: var(--gz-radius-xl);
+
+  /* Shadow */
+  --shadow-sm: var(--gz-shadow-sm);
+  --shadow-md: var(--gz-shadow-md);
+  --shadow-lg: var(--gz-shadow-lg);
+
+  /* Layout */
+  --container-page: var(--gz-container);
+}
+
+/* ---------------------------------------------------------------------------
+   Semantic layer. Ghazara ships one committed look — limestone paper with
+   petrol ink. Both :root and .dark carry the same values so shadcn primitives
+   that branch on the dark variant land on the intended surface.
+--------------------------------------------------------------------------- */
+:root,
+.dark {
+  --background: var(--gz-limestone-50);
+  --foreground: var(--gz-limestone-900);
+
+  --card: #ffffff;
+  --card-foreground: var(--gz-limestone-900);
+  --popover: #ffffff;
+  --popover-foreground: var(--gz-limestone-900);
+
+  --primary: var(--gz-petrol-700);
+  --primary-foreground: var(--gz-limestone-50);
+
+  --secondary: var(--gz-limestone-100);
+  --secondary-foreground: var(--gz-limestone-800);
+
+  --muted: var(--gz-limestone-100);
+  --muted-foreground: var(--gz-limestone-600);
+
+  --accent: var(--gz-petrol-50);
+  --accent-foreground: var(--gz-petrol-800);
+
+  --destructive: var(--gz-danger-500);
+  --destructive-foreground: var(--gz-limestone-50);
+
+  --border: var(--gz-limestone-300);
+  --input: var(--gz-limestone-300);
+  --ring: var(--gz-petrol-500);
+
+  --radius: var(--gz-radius-md);
+
+  --sidebar: var(--gz-petrol-950);
+  --sidebar-foreground: var(--gz-petrol-100);
+  --sidebar-primary: var(--gz-petrol-300);
+  --sidebar-primary-foreground: var(--gz-petrol-950);
+  --sidebar-accent: var(--gz-petrol-900);
+  --sidebar-accent-foreground: var(--gz-limestone-50);
+  --sidebar-border: var(--gz-petrol-900);
+  --sidebar-ring: var(--gz-petrol-400);
+
+  --chart-1: var(--gz-petrol-700);
+  --chart-2: var(--gz-clay-500);
+  --chart-3: var(--gz-petrol-400);
+  --chart-4: var(--gz-slate-500);
+  --chart-5: var(--gz-limestone-400);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: var(--gz-family-body);
+    -webkit-text-size-adjust: 100%;
+    scrollbar-color: var(--gz-limestone-400) transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-size: var(--gz-text-base);
+    line-height: var(--gz-leading-normal);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--gz-family-display);
+    letter-spacing: var(--gz-track-tight);
+    line-height: var(--gz-leading-tight);
+  }
+
+  /* Arabic sets tighter than Latin at the same size and takes no tracking. */
+  [lang="ar"] h1,
+  [lang="ar"] h2,
+  [lang="ar"] h3,
+  [lang="ar"] h4 {
+    letter-spacing: var(--gz-track-normal);
+    line-height: var(--gz-leading-tight);
+  }
+
+  /* One visible, consistent focus treatment everywhere. */
+  :focus-visible {
+    outline: 2px solid var(--gz-petrol-600);
+    outline-offset: 2px;
+    border-radius: var(--gz-radius-xs);
+  }
+
+  ::selection {
+    background: var(--gz-petrol-200);
+    color: var(--gz-petrol-950);
+  }
+}
+
+@layer components {
+  /* Every number in this interface is mono and tabular — prices, areas, the
+     dimension ticks on the facade plates, the dashboard figures. */
+  .tnum {
+    font-family: var(--gz-family-mono);
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+  }
+
+  /* Small caps rail used on section heads. Latin gets the wide tracking that
+     makes a rail read as a rail; Arabic keeps its natural fit. */
+  .gz-rail {
+    font-family: var(--gz-family-mono);
+    font-size: var(--gz-text-2xs);
+    letter-spacing: var(--gz-track-widest);
+    text-transform: uppercase;
+    color: var(--gz-limestone-600);
+  }
+
+  [lang="ar"] .gz-rail {
+    font-family: var(--gz-family-body);
+    font-size: var(--gz-text-xs);
+    font-weight: var(--gz-weight-medium);
+    letter-spacing: var(--gz-track-normal);
+    text-transform: none;
+  }
+
+  /* The drawing sheet: a faint square grid, the paper everything sits on. */
+  .gz-sheet {
+    background-image:
+      linear-gradient(
+        to right,
+        color-mix(in srgb, var(--gz-limestone-400) 34%, transparent) 0 1px,
+        transparent 1px 100%
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--gz-limestone-400) 34%, transparent) 0 1px,
+        transparent 1px 100%
+      );
+    background-size: 28px 28px;
+  }
+
+  /* Dimension rule: the ticked line an architect draws under a measurement. */
+  .gz-dimension {
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--gz-limestone-400) 0 1px,
+      transparent 1px 6px
+    );
+    height: 1px;
+  }
+
+  /* Hairline that survives on any of our surfaces. */
+  .gz-hairline {
+    border-color: color-mix(
+      in srgb,
+      var(--gz-limestone-400) 55%,
+      transparent
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

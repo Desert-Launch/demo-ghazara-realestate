@@ -1,0 +1,172 @@
+/* ---------------------------------------------------------------------------
+   غزارة العقارية — Ghazara Real Estate · design tokens
+   ---------------------------------------------------------------------------
+   Single source of truth for colour, type, space, radius, shadow and motion.
+   Components reference these variables (or the Tailwind utilities mapped from
+   them in globals.css). No raw hex values in component files.
+
+   Direction: an architect's drawing set for north Riyadh. Limestone paper,
+   petrol-teal ink from the client's logo, thin rules and dimension ticks.
+   Deliberately NOT the navy-and-gold "luxury property" cliché: no gold, no
+   glass-tower photography, no spindly luxury serif. Calm, grounded, measured —
+   the way a surveyor's drawing is trustworthy without shouting.
+--------------------------------------------------------------------------- */
+
+:root {
+  /* --- Petrol: the logo colour. #245c6b is the seed (petrol-700). ------- */
+  --gz-petrol-50: #f0f6f7;
+  --gz-petrol-100: #dcebee;
+  --gz-petrol-200: #b9d7dd;
+  --gz-petrol-300: #8bbac5;
+  --gz-petrol-400: #5896a6;
+  --gz-petrol-500: #3a7a8a;
+  --gz-petrol-600: #2d6676; /* hover on primary */
+  --gz-petrol-700: #245c6b; /* BRAND — primary actions, wordmark */
+  --gz-petrol-800: #1e4b57;
+  --gz-petrol-900: #193c46;
+  --gz-petrol-950: #102831; /* admin chrome, footer */
+
+  /* --- Limestone: the paper. Warm off-white through to ink. ------------ */
+  --gz-limestone-50: #fbfaf7; /* page */
+  --gz-limestone-100: #f4f1ea; /* raised band, inset well */
+  --gz-limestone-200: #ebe6db; /* card edge, hairline */
+  --gz-limestone-300: #dcd5c6; /* border */
+  --gz-limestone-400: #bfb6a3; /* strong border, drawing rule */
+  --gz-limestone-500: #948b79; /* decorative line, disabled text */
+  --gz-limestone-600: #6b6455; /* muted text — 5.6:1 on limestone-50 */
+  --gz-limestone-700: #514b3f;
+  --gz-limestone-800: #38342c; /* secondary text */
+  --gz-limestone-900: #24211c; /* primary text — 14.2:1 on limestone-50 */
+
+  /* --- Clay: the one restrained highlight. Sun-baked, never gold. ------ */
+  --gz-clay-50: #fbf1ea;
+  --gz-clay-100: #f5e2d4;
+  --gz-clay-300: #ddab89;
+  --gz-clay-500: #b5613e; /* reserved units, "new" lead pips */
+  --gz-clay-600: #9c5133;
+  --gz-clay-700: #7c4028;
+
+  /* --- Signals --------------------------------------------------------- */
+  --gz-danger-50: #fbeae7;
+  --gz-danger-500: #b3402f;
+  --gz-danger-700: #8a2f22;
+  --gz-slate-50: #eef2f5;
+  --gz-slate-500: #4a6480; /* rented — cool, settled, distinct from teal */
+  --gz-slate-700: #364a61;
+
+  /* --- Unit status. One colour per state, used everywhere unchanged. ---- */
+  --gz-status-available-ink: var(--gz-petrol-700);
+  --gz-status-available-bg: var(--gz-petrol-100);
+  --gz-status-reserved-ink: var(--gz-clay-700);
+  --gz-status-reserved-bg: var(--gz-clay-100);
+  --gz-status-sold-ink: var(--gz-limestone-800);
+  --gz-status-sold-bg: var(--gz-limestone-200);
+  --gz-status-rented-ink: var(--gz-slate-700);
+  --gz-status-rented-bg: var(--gz-slate-50);
+
+  /* --- Facade plates: the CSS-drawn stand-in for property photography.
+         One tint pair per property type, all within the limestone/petrol
+         family so a grid of them reads as one drawing set. ---------------- */
+  --gz-plate-apartment-sky: #dbe7ea;
+  --gz-plate-apartment-wall: #efe9dd;
+  --gz-plate-villa-sky: #e3e9e3;
+  --gz-plate-villa-wall: #f3ece0;
+  --gz-plate-floor-sky: #e2e5ec;
+  --gz-plate-floor-wall: #ece7dd;
+  --gz-plate-land-sky: #e8e6da;
+  --gz-plate-land-wall: #e2dccb;
+  --gz-plate-commercial-sky: #dde4e6;
+  --gz-plate-commercial-wall: #e8e4dc;
+
+  /* --- Type -----------------------------------------------------------
+     One family set per script, switched on `lang` at the root rather than
+     left to per-glyph fallback. next/font emits a metric-matched local Arial
+     face alongside every Latin family, and that face carries no unicode-range
+     — chain "Manrope, Tajawal" and Arial claims every Arabic glyph before
+     Tajawal is ever asked. Swapping the whole stack is deterministic and gives
+     each script type that was drawn for it.
+     The --font-gz-* variables are emitted by next/font in app/layout.tsx. */
+  --gz-family-display: var(--font-gz-display-latin), ui-sans-serif, system-ui,
+    sans-serif;
+  --gz-family-body: var(--font-gz-body-latin), ui-sans-serif, system-ui,
+    sans-serif;
+  --gz-family-mono: var(--font-gz-mono), ui-monospace, SFMono-Regular, monospace;
+
+  --gz-text-2xs: 0.6875rem; /* 11 — dimension ticks, rails */
+  --gz-text-xs: 0.75rem; /* 12 — chips, table meta */
+  --gz-text-sm: 0.8125rem; /* 13 — secondary copy */
+  --gz-text-base: 0.9375rem; /* 15 — body */
+  --gz-text-lg: 1.0625rem; /* 17 — lead paragraph */
+  --gz-text-xl: 1.3125rem; /* 21 — card title */
+  --gz-text-2xl: 1.625rem; /* 26 — section head */
+  --gz-text-3xl: 2.125rem; /* 34 */
+  --gz-text-4xl: 2.75rem; /* 44 */
+  --gz-text-5xl: 3.5rem; /* 56 */
+  --gz-text-6xl: 4.5rem; /* 72 — hero */
+
+  --gz-leading-flat: 1;
+  --gz-leading-tight: 1.16; /* Arabic needs more room than a Latin-only scale */
+  --gz-leading-snug: 1.4;
+  --gz-leading-normal: 1.65;
+  --gz-leading-loose: 1.85;
+
+  --gz-weight-regular: 400;
+  --gz-weight-medium: 500;
+  --gz-weight-semibold: 600;
+  --gz-weight-bold: 700;
+  --gz-weight-black: 800;
+
+  --gz-track-tighter: -0.03em;
+  --gz-track-tight: -0.015em;
+  --gz-track-normal: 0em;
+  --gz-track-wide: 0.05em;
+  --gz-track-widest: 0.14em; /* Latin rails only — never applied to Arabic */
+
+  /* --- Space: 4px base -------------------------------------------------- */
+  --gz-space-1: 0.25rem;
+  --gz-space-2: 0.5rem;
+  --gz-space-3: 0.75rem;
+  --gz-space-4: 1rem;
+  --gz-space-5: 1.25rem;
+  --gz-space-6: 1.5rem;
+  --gz-space-8: 2rem;
+  --gz-space-10: 2.5rem;
+  --gz-space-12: 3rem;
+  --gz-space-16: 4rem;
+  --gz-space-20: 5rem;
+  --gz-space-24: 6rem;
+
+  --gz-container: 80rem;
+  --gz-gutter: 1.25rem;
+
+  /* --- Radius: soft but square-shouldered, like a drawing sheet --------- */
+  --gz-radius-xs: 3px;
+  --gz-radius-sm: 5px;
+  --gz-radius-md: 8px;
+  --gz-radius-lg: 12px;
+  --gz-radius-xl: 18px;
+  --gz-radius-pill: 999px;
+
+  /* --- Shadow: on paper, depth is a shallow lift, not a drop ------------ */
+  --gz-shadow-sm: 0 1px 2px rgb(36 33 28 / 0.06);
+  --gz-shadow-md: 0 10px 26px -14px rgb(36 33 28 / 0.28);
+  --gz-shadow-lg: 0 30px 60px -30px rgb(16 40 49 / 0.4);
+  --gz-ring-petrol: 0 0 0 3px rgb(36 92 107 / 0.16);
+
+  /* --- Motion ----------------------------------------------------------- */
+  --gz-ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --gz-ease-in-out: cubic-bezier(0.6, 0, 0.2, 1);
+  --gz-duration-fast: 120ms;
+  --gz-duration-base: 220ms;
+  --gz-duration-slow: 460ms;
+}
+
+/* Arabic — the default. IBM Plex Sans Arabic also carries the numerals, so a
+   price column stays tabular without dropping to a Latin mono face that has no
+   Arabic in it at all. */
+:root[lang="ar"] {
+  --gz-family-display: var(--font-gz-display-ar), ui-sans-serif, system-ui,
+    sans-serif;
+  --gz-family-body: var(--font-gz-body-ar), ui-sans-serif, system-ui, sans-serif;
+  --gz-family-mono: var(--font-gz-body-ar), ui-sans-serif, system-ui, sans-serif;
+}
