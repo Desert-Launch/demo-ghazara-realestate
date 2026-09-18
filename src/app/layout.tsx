@@ -9,6 +9,7 @@ import {
 
 import { Providers } from "./providers";
 import { DemoBar } from "@/components/layout/demo-bar";
+import { demoJsonLd, demoMetadata } from "@/lib/desert-launch";
 import "./globals.css";
 
 /* Two scripts, one voice.
@@ -52,14 +53,12 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  // Fictional business, invented contact details: never a search result.
-  robots: { index: false, follow: false },
   title: {
     default: "غزارة العقارية — عقارات شمال الرياض",
     template: "%s · غزارة العقارية",
   },
-  description:
-    "وساطة عقارية في النرجس، شمال الرياض. شقق وأدوار وفلل وأراضٍ للبيع والإيجار في النرجس والياسمين والملقا والعارض.",
+  // Share preview, robots, canonical host and the link back to the studio.
+  ...demoMetadata(),
 };
 
 export const viewport: Viewport = {
@@ -88,7 +87,11 @@ export default function RootLayout({
       className={`${displayLatin.variable} ${displayArabic.variable} ${bodyLatin.variable} ${bodyArabic.variable} ${mono.variable}`}
     >
       <body className="min-h-dvh bg-background text-foreground">
-        <DemoBar demo="غزارة العقارية" slug="realestate" lang="ar" />
+        <DemoBar />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(demoJsonLd()) }}
+        />
         <Providers>{children}</Providers>
       </body>
     </html>

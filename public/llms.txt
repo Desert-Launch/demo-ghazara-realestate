@@ -1,0 +1,40 @@
+# غزارة العقارية — Ghazara Real Estate — a working demo by Desert Launch
+
+> عرض تجريبي يعمل لموقع وساطة عقارية مع لوحة تحكم، من Desert Launch: قوائم قابلة للبحث بفلاتر تنتقل مع الرابط، حفظ الوحدات، استفسارات تصل إلى لوحة العملاء، وإدارة كاملة للوحدات. شركة خيالية وبيانات تجريبية. A working demo of a real estate brokerage website with its admin, by Desert Launch; Arabic-first with an English switch.
+
+نشاط تجاري خيالي: الأسماء والأسعار والعناوين وأرقام الهواتف مُختلَقة، والبيانات تجريبية تُعاد عند تحديث الصفحة.
+
+This is one of six live demos published by Desert Launch (https://www.desertlaunch.dev/), a software development company in Cairo, Egypt that builds mobile apps, web platforms, MVPs and internal business systems for clients in Egypt, the Gulf, Europe and the US. The demos exist so a prospective client can try the customer-facing flow and then see it arrive on the staff side. The full list, how to use them and what a real build adds: https://www.desertlaunch.dev/demos/ (Arabic: https://www.desertlaunch.dev/ar/demos/).
+
+## What this demo is
+
+- Kind of business portrayed: real estate brokerage, set in Riyadh.
+- Interface languages: Arabic and English.
+- Everything runs in the browser against an in-memory store. There is no backend, no database, no accounts and no payments; nothing entered is sent anywhere, and a refresh resets the data.
+- The demo is intentionally excluded from search engines (noindex) because it is not a real business.
+
+## What works
+
+- Searchable listings: sale/rent, type, district, price, beds, baths, area; filters travel in the URL
+- District panel that highlights the matching pin and doubles as a filter
+- Saved units
+- Enquiry capture that lands on a leads board
+- Full CRUD over units; sold units leave the public listings
+- Arabic-first with an English switch and full RTL
+
+## Where to look
+
+- / — home
+- /properties — listings
+- /properties/[id] — a unit
+- /admin — dashboard
+- /admin/properties and /admin/enquiries
+
+## Getting one like this
+
+Any of these would be adapted to a real business's services, prices, hours, languages and brand, on a real database with accounts, payments and hosting where needed. Desert Launch quotes a fixed price in writing after a free scope call. WhatsApp: +20 102 283 8534. Email: abdullah@desertlaunch.dev.
+
+- Studio: https://www.desertlaunch.dev/
+- All demos: https://www.desertlaunch.dev/demos/
+- Source code: https://github.com/Desert-Launch/demo-ghazara-realestate
+- Studio llms.txt: https://www.desertlaunch.dev/llms.txt
