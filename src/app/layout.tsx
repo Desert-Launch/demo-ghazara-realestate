@@ -54,8 +54,8 @@ const mono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "غزارة العقارية — عقارات شمال الرياض",
-    template: "%s · غزارة العقارية",
+    default: "ديمو العقارية — عقارات شمال الرياض",
+    template: "%s · ديمو العقارية",
   },
   // Share preview, robots, canonical host and the link back to the studio.
   ...demoMetadata(),

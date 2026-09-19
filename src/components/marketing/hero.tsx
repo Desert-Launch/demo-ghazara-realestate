@@ -80,8 +80,6 @@ export function Hero({ unitCount }: { unitCount: number }) {
             <Button asChild size="lg" variant="outline">
               <a
                 href={whatsappLink(t.home.heroSecondary)}
-                target="_blank"
-                rel="noreferrer noopener"
               >
                 <MessageCircle data-icon="inline-start" aria-hidden />
                 {t.home.heroSecondary}

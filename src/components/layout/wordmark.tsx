@@ -11,7 +11,7 @@ interface WordmarkProps {
 }
 
 /**
- * The agency's mark: the calligraphic "غ" in an off-white counter on a petrol
+ * The agency's mark: the calligraphic "د" (for ديمو) in an off-white counter on a petrol
  * tile, with the name set beside it. Drawn as type inside a rounded tile rather
  * than an image, so it stays crisp at every size and inherits the palette.
  */
@@ -34,7 +34,7 @@ export function Wordmark({
         )}
         style={{ fontFamily: "var(--gz-family-display)", paddingBottom: "2px" }}
       >
-        غ
+        د
       </span>
       <span className="flex flex-col leading-none">
         <span

@@ -129,21 +129,16 @@ export function EnquiryDetailSheet({
 
           <div className="space-y-7 px-4 pb-8">
             <section className="flex flex-wrap gap-2">
-              <Button asChild variant="outline" size="sm">
-                <a href={`tel:${enquiry.phone}`} dir="ltr">
-                  <Phone data-icon="inline-start" aria-hidden />
-                  <span className="tnum">{enquiry.phone}</span>
-                </a>
+              {/* Disabled on purpose: every seeded number ends in "xxx" and a demo
+                  must never dial or message anyone. The controls stay so the
+                  workflow reads as it would with real numbers. */}
+              <Button variant="outline" size="sm" disabled title={t.admin.demoContactHint} dir="ltr">
+                <Phone data-icon="inline-start" aria-hidden />
+                <span className="tnum">{enquiry.phone}</span>
               </Button>
-              <Button asChild variant="outline" size="sm">
-                <a
-                  href={`https://wa.me/966${enquiry.phone.replace(/^0/, "")}`}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  <MessageCircle data-icon="inline-start" aria-hidden />
-                  {t.meta.contactPreference.whatsapp}
-                </a>
+              <Button variant="outline" size="sm" disabled title={t.admin.demoContactHint}>
+                <MessageCircle data-icon="inline-start" aria-hidden />
+                {t.meta.contactPreference.whatsapp}
               </Button>
               {enquiry.email ? (
                 <Button asChild variant="outline" size="sm">

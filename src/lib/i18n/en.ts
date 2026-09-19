@@ -6,8 +6,8 @@ import type { Dictionary } from "./ar";
  */
 export const en: Dictionary = {
   brand: {
-    name: "Ghazara Real Estate",
-    short: "Ghazara",
+    name: "Demo Real Estate",
+    short: "Demo",
     tagline: "Property brokerage in north Riyadh",
   },
 
@@ -59,10 +59,10 @@ export const en: Dictionary = {
   },
 
   home: {
-    heroEyebrow: "Al Narjis · North Riyadh",
+    heroEyebrow: "Demo District · North Riyadh",
     heroTitle: "We know north Riyadh street by street",
     heroLede:
-      "Ghazara is a brokerage based in Al Narjis. We list apartments, floors, villas and land across Al Narjis, Al Yasmin, Al Malqa and Al Arid — the price is written down, the area is measured, and viewings are booked the same week.",
+      "A demo brokerage based in north Riyadh. We list apartments, floors, villas and land across Al Narjis, Al Yasmin, Al Malqa and Al Arid — the price is written down, the area is measured, and viewings are booked the same week.",
     heroPrimary: "Browse properties",
     heroSecondary: "Message us on WhatsApp",
     statUnits: "units listed",
@@ -77,7 +77,7 @@ export const en: Dictionary = {
     featuredLede:
       "A selection from this week — sale and rent across north Riyadh.",
     featuredAll: "See every unit",
-    trustRail: "Why Ghazara",
+    trustRail: "Why us",
     trustTitle: "The way we work is simple",
     trust1Title: "The written price is the price",
     trust1Body:
@@ -92,8 +92,8 @@ export const en: Dictionary = {
     trust4Body:
       "From the listing to the title transfer and the keys, the same person stays on your file.",
     visitRail: "The office",
-    visitTitle: "Come by in Al Narjis",
-    visitAddress: "Anas Ibn Malik Road, Al Narjis, Riyadh",
+    visitTitle: "Come by the office",
+    visitAddress: "1 Demo Street, Demo District, Riyadh",
     visitHoursTitle: "Opening hours",
     visitHoursWeek: "Sunday – Thursday",
     visitHoursWeekValue: "9:00 – 18:00",
@@ -107,9 +107,9 @@ export const en: Dictionary = {
   about: {
     title: "About us",
     lede: "A small office, a short list of districts, and work we know well.",
-    storyTitle: "We started from one office in Al Narjis",
+    storyTitle: "We started from one office in north Riyadh",
     storyBody1:
-      "Ghazara opened in 2014 with one office and three people. We have worked north Riyadh ever since: Al Narjis, Al Yasmin, Al Malqa, Al Arid, Al Qirawan and Hittin.",
+      "The office opened in 2014 with one office and three people. We have worked north Riyadh ever since: Al Narjis, Al Yasmin, Al Malqa, Al Arid, Al Qirawan and Hittin.",
     storyBody2:
       "We don't list everything that comes to us. A unit goes up after we've walked it and checked the area, the deed and the condition. If a unit isn't worth the asking price, the owner hears it before the buyer does.",
     storyBody3:
@@ -346,6 +346,7 @@ export const en: Dictionary = {
     detailAssignedNone: "Unassigned",
     detailNote: "Internal note",
     detailNotePlaceholder: "A note only the team sees…",
+    demoContactHint: "Demo number — calling and messaging are switched off.",
     detailSaveNote: "Save note",
     detailViewing: "Viewing time",
     openUnit: "Open the unit page",
@@ -487,8 +488,8 @@ export const en: Dictionary = {
     explore: "Explore",
     office: "The office",
     legal: "A design demo — every figure on this site is invented.",
-    rights: "Ghazara Real Estate · All rights reserved",
-    license: "Licence no. 1200004567 (illustrative)",
+    rights: "Demo Real Estate · Fictional brokerage, demo build",
+    license: "Licence no. 000000 (demo — not a real licence)",
   },
 
   notFound: {

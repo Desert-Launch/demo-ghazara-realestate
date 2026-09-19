@@ -11,7 +11,9 @@ import { fill } from "@/lib/i18n";
 type FormErrors = Dictionary["form"]["errors"];
 
 /** Saudi mobile numbers: ten digits starting 05. */
-const SAUDI_MOBILE = /^05\d{8}$/;
+// The last three may be "x": every seeded number ends in xxx so the demo can
+// never dial a real line, and editing such a record must still validate.
+const SAUDI_MOBILE = /^05\d{5}[\dx]{3}$/i;
 
 /** What a visitor fills in on a property page. */
 export function makeEnquiryFormSchema(e: FormErrors) {

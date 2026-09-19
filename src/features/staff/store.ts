@@ -12,27 +12,27 @@ import type { StaffMember } from "@/types";
 export const STAFF_ROSTER: StaffMember[] = [
   {
     id: "staff_reem",
-    name: { ar: "ريم القحطاني", en: "Reem Al Qahtani" },
-    role: { ar: "مديرة المكتب", en: "Office manager" },
-    initials: "RQ",
+    name: { ar: "مدير ١", en: "Manager 1" },
+    role: { ar: "مدير المكتب", en: "Office manager" },
+    initials: "M1",
   },
   {
     id: "staff_mohammed",
-    name: { ar: "محمد العتيبي", en: "Mohammed Al Otaibi" },
+    name: { ar: "وسيط ١", en: "Agent 1" },
     role: { ar: "وسيط عقاري", en: "Broker" },
-    initials: "MO",
+    initials: "A1",
   },
   {
     id: "staff_sara",
-    name: { ar: "سارة الدوسري", en: "Sara Al Dosari" },
+    name: { ar: "وسيط ٢", en: "Agent 2" },
     role: { ar: "خدمة العملاء", en: "Client services" },
-    initials: "SD",
+    initials: "A2",
   },
   {
     id: "staff_faisal",
-    name: { ar: "فيصل الحمود", en: "Faisal Al Hamoud" },
+    name: { ar: "وسيط ٣", en: "Agent 3" },
     role: { ar: "تسويق ومعاينات", en: "Marketing and viewings" },
-    initials: "FH",
+    initials: "A3",
   },
 ];
 

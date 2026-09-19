@@ -7,7 +7,7 @@ import { useT } from "@/lib/i18n";
  *
  * Not a map integration — there is no tile server, no coordinates and no map
  * library in this project. It is a diagram of the junction, which is what
- * somebody actually needs to find a door on Anas Ibn Malik Road.
+ * somebody actually needs to find a door on a real road.
  *
  * Like the district panel, it keeps physical left/top positioning in both
  * directions: mirroring a place would move the office to the wrong corner.

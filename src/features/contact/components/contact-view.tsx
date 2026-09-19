@@ -63,7 +63,7 @@ export function ContactView() {
                 </dt>
                 <dd>
                   <a
-                    href={`tel:${AGENCY.phone}`}
+                    href={AGENCY.phoneHref}
                     dir="ltr"
                     className="tnum text-limestone-800 underline-offset-4 hover:underline"
                   >
@@ -80,8 +80,6 @@ export function ContactView() {
                 <dd>
                   <a
                     href={whatsappLink(t.contact.lede)}
-                    target="_blank"
-                    rel="noreferrer noopener"
                     className="text-limestone-800 underline-offset-4 hover:underline"
                   >
                     {t.common.whatsapp}

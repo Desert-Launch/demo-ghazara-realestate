@@ -1,4 +1,4 @@
-# غزارة العقارية — Ghazara Real Estate (demo)
+# ديمو العقارية — Demo Real Estate (demo)
 
 A frontend-only listings and lead-capture site for a fictional north-Riyadh
 brokerage. Everything a visitor or a staff member can do — browsing, filtering,

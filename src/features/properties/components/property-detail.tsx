@@ -177,8 +177,6 @@ export function PropertyDetail({ id }: { id: string }) {
                       title: text(property.title),
                     }),
                   )}
-                  target="_blank"
-                  rel="noreferrer noopener"
                 >
                   <MessageCircle data-icon="inline-start" aria-hidden />
                   {t.common.whatsapp}

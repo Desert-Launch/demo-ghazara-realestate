@@ -32,7 +32,7 @@ export function VisitPanel() {
               <li className="flex items-center gap-3">
                 <Phone aria-hidden className="size-4 shrink-0 text-petrol-600" />
                 <a
-                  href={`tel:${AGENCY.phone}`}
+                  href={AGENCY.phoneHref}
                   className="tnum underline-offset-4 hover:underline"
                   dir="ltr"
                 >
