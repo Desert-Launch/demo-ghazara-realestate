@@ -34,4 +34,28 @@ export const DEMO = {
       "Arabic-first with an English switch and full RTL"
   ],
   repo: "https://github.com/Desert-Launch/demo-ghazara-realestate",
+  /** What the demo is, in the words its buyer searches with. The share-preview
+   *  title and the heading of llms.txt. In the demo's own language. */
+  headline: "موقع وساطة عقارية مع البحث في الوحدات وإدارة العملاء المحتملين",
+  /** Who the demo is for: the owner of this kind of business, not the
+   *  business's customers. Emitted as `audience` in the JSON-LD. */
+  audience: "Real estate brokerages, property developers and property managers",
+  /** The Desert Launch page that owns this vertical in search and explains
+   *  what a real build adds. The bar's brand link and the JSON-LD point here,
+   *  so the demo hands its visitors and its context to one indexed page. */
+  industry: {
+    url: "https://www.desertlaunch.dev/ar/industries/real-estate/",
+    name: "المواقع العقارية من Desert Launch",
+  },
+  /** The bar's call to action, in the demo's language. */
+  cta: "تريد مثله لشركتك العقارية؟",
+  /** Routes worth opening, listed in llms.txt. */
+  pages: [
+    { path: "/", label: "home" },
+    { path: "/properties", label: "listings with filters" },
+    { path: "/properties/[id]", label: "a unit" },
+    { path: "/admin", label: "dashboard" },
+    { path: "/admin/properties", label: "unit admin" },
+    { path: "/admin/enquiries", label: "leads board" },
+  ],
 } as const;
