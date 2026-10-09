@@ -2,9 +2,9 @@
  * The demo "backend".
  *
  * A module-level singleton holding properties and enquiries. No React, no
- * framework imports, no persistence — the data re-seeds whenever the module is
- * evaluated fresh (a hard refresh), and every add / edit / delete survives for
- * the rest of the browser session.
+ * framework imports. Each write is saved to this browser by `persist.ts`, so
+ * an enquiry sent from a unit page is still on the board after a refresh or in
+ * a new tab, for the rest of the day.
  *
  * Nothing outside `src/lib/store` and the feature `api.ts` files may import
  * this module. UI reaches it through: component → feature hook → api.ts → store.
@@ -17,11 +17,12 @@ import {
   createSeedEnquiries,
   createSeedProperties,
 } from "./seed";
+import { persistedStore } from "./persist";
 
 interface Database {
   properties: Property[];
   enquiries: Enquiry[];
-  /** Keeps references sequential and human-readable within one session. */
+  /** Keeps references sequential and human-readable across saves. */
   nextPropertyReference: number;
   nextEnquiryReference: number;
 }
@@ -39,11 +40,33 @@ function createDatabase(): Database {
   };
 }
 
-let db: Database = createDatabase();
+const persisted = persistedStore<Database>({
+  version: 1,
+  seed: createDatabase,
+  isValid: (data) => {
+    const saved = data as Partial<Database> | null;
+    return (
+      Array.isArray(saved?.properties) &&
+      Array.isArray(saved?.enquiries) &&
+      typeof saved?.nextPropertyReference === "number" &&
+      typeof saved?.nextEnquiryReference === "number"
+    );
+  },
+});
+
+let db: Database = persisted.load();
+persisted.onExternalChange((data) => {
+  db = data;
+});
+
+/** Every write ends here. */
+function commit(): void {
+  persisted.save(db);
+}
 
 /** Wired to the reset control in the admin sidebar footer. */
 export function resetStore(): void {
-  db = createDatabase();
+  db = persisted.reset();
 }
 
 export function newId(): string {
@@ -53,12 +76,14 @@ export function newId(): string {
 export function nextPropertyReference(): string {
   const reference = `GZ-${db.nextPropertyReference}`;
   db.nextPropertyReference += 1;
+  commit();
   return reference;
 }
 
 export function nextEnquiryReference(): string {
   const reference = `ENQ-${db.nextEnquiryReference}`;
   db.nextEnquiryReference += 1;
+  commit();
   return reference;
 }
 
@@ -75,6 +100,7 @@ export function selectProperty(id: string): Property | undefined {
 
 export function insertProperty(property: Property): Property {
   db.properties = [property, ...db.properties];
+  commit();
   return structuredClone(property);
 }
 
@@ -93,6 +119,7 @@ export function patchProperty(
   db.properties = db.properties.map((property, i) =>
     i === index ? updated : property,
   );
+  commit();
   return structuredClone(updated);
 }
 
@@ -108,6 +135,7 @@ export function removeProperty(id: string): void {
   db.enquiries = db.enquiries.map((enquiry) =>
     enquiry.propertyId === id ? { ...enquiry, propertyId: null } : enquiry,
   );
+  commit();
 }
 
 /* --- Enquiries ------------------------------------------------------------ */
@@ -123,6 +151,7 @@ export function selectEnquiry(id: string): Enquiry | undefined {
 
 export function insertEnquiry(enquiry: Enquiry): Enquiry {
   db.enquiries = [enquiry, ...db.enquiries];
+  commit();
   return structuredClone(enquiry);
 }
 
@@ -141,6 +170,7 @@ export function patchEnquiry(
   db.enquiries = db.enquiries.map((enquiry, i) =>
     i === index ? updated : enquiry,
   );
+  commit();
   return structuredClone(updated);
 }
 
@@ -148,6 +178,7 @@ export function removeEnquiry(id: string): void {
   const exists = db.enquiries.some((enquiry) => enquiry.id === id);
   if (!exists) throw new Error(`No enquiry with id ${id}`);
   db.enquiries = db.enquiries.filter((enquiry) => enquiry.id !== id);
+  commit();
 }
 
 /**

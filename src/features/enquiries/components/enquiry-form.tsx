@@ -27,7 +27,7 @@ import {
 } from "../schema";
 
 /**
- * The public capture form. A submit writes a lead straight into the in-memory
+ * The public capture form. A submit writes a lead straight into the local
  * store, which is the same list the admin board reads — send one here and it is
  * in the "New" column before the toast fades.
  */

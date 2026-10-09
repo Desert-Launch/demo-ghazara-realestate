@@ -3,7 +3,7 @@
 A frontend-only listings and lead-capture site for a fictional north-Riyadh
 brokerage. Everything a visitor or a staff member can do — browsing, filtering,
 saving, enquiring, adding and editing units, moving leads across the board —
-works for real, in memory, for the length of the browser session.
+works for real, in the visitor's own browser, for the rest of the day.
 
 There is no backend, no database, no auth server, no payments, no email and no
 map integration. Every figure, name, phone number and unit is invented.
@@ -42,11 +42,28 @@ properties and enquiries, seeded on first import.
   last two weeks with mixed statuses.
 - `db.ts` — typed reads and writes. Nothing outside `src/lib/store` and the
   feature `api.ts` files imports it.
+- `persist.ts` — saves the store to `localStorage` after every write and loads
+  it back when the app starts, so an enquiry sent from a unit page is still on
+  the board after a refresh or in a new tab. A board open in another tab
+  refetches as soon as the site writes (the providers listen for it). A saved
+  copy is kept for the day it was seeded on; a new day, or a copy whose
+  `version` no longer matches the one in `db.ts`, starts from a fresh seed.
+  **Bump that `version` whenever the shape of the stored data changes.**
+  Identical in every demo.
+
+Saved units (the heart on a card) are kept in `sessionStorage` by the
+favourites store, so they survive a refresh for as long as the tab is open. The
+locale is deliberately not persisted: the server renders Arabic, and a saved
+English choice would make the first paint wrong.
 
 **Resetting the demo data:** the sidebar footer in `/admin` has *أعد ضبط بيانات
-العرض / Reset demo data*, which re-seeds the store and invalidates every query.
-A hard refresh does the same thing — the store is re-created whenever the module
-is evaluated fresh. Nothing is written to `localStorage`.
+العرض / Reset demo data*, which re-seeds the store, overwrites the saved copy
+and invalidates every query. A refresh no longer resets anything.
+
+The Desert Launch bar at the top of every page carries the switch between the
+two sides: **افتح لوحة التحكم** (open the dashboard) on the site, **العودة إلى
+الموقع** (back to the site) on the dashboard
+(`src/components/layout/demo-side-switch.tsx`).
 
 **Money and periods.** Prices are whole Saudi riyals; a sale price is the total
 and a rent price is what one period costs. Riyadh quotes residential rent by the

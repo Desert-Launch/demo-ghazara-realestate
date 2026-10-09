@@ -258,7 +258,7 @@ export const en: Dictionary = {
     navProperties: "Units",
     navEnquiries: "Enquiries",
     viewSite: "View the site",
-    demoNote: "Demo — all data lives in memory.",
+    demoNote: "Demo — data is saved in this browser only.",
     resetData: "Reset demo data",
     resetToast: "Demo data is back to its starting state",
 

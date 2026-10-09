@@ -259,7 +259,7 @@ export const ar = {
     navProperties: "الوحدات",
     navEnquiries: "الطلبات",
     viewSite: "اعرض الموقع",
-    demoNote: "عرض توضيحي — البيانات في الذاكرة فقط.",
+    demoNote: "عرض توضيحي — البيانات محفوظة في هذا المتصفح فقط.",
     resetData: "أعد ضبط بيانات العرض",
     resetToast: "رجّعنا البيانات لوضعها الأول",
 

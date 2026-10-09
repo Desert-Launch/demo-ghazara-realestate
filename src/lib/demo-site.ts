@@ -12,6 +12,8 @@ export const DEMO = {
   /** Latin-only name for the share-preview image, whose default font has no Arabic. */
   latinName: "Demo Real Estate",
   url: "https://realestate.demos.desertlaunch.dev",
+  /** The staff side. The demo bar's switch opens it from every public page. */
+  adminPath: "/admin",
   /** Language of the bar and the metadata. Typed as the union so the shared
    *  code that handles both languages stays identical in every demo. */
   lang: "ar" as DemoLang,
@@ -24,7 +26,7 @@ export const DEMO = {
     "عرض تجريبي يعمل لموقع وساطة عقارية مع لوحة تحكم، من Desert Launch: قوائم قابلة للبحث بفلاتر تنتقل مع الرابط، حفظ الوحدات، استفسارات تصل إلى لوحة العملاء، وإدارة كاملة للوحدات. شركة خيالية وبيانات تجريبية. A working demo of a real estate brokerage website with its admin, by Desert Launch; Arabic-first with an English switch.",
   /** Plain statement that the business is invented. */
   fiction:
-    "نشاط تجاري خيالي: الأسماء والأسعار والعناوين وأرقام الهواتف مُختلَقة، والبيانات تجريبية تُعاد عند تحديث الصفحة.",
+    "نشاط تجاري خيالي: الأسماء والأسعار والعناوين وأرقام الهواتف مُختلَقة، والبيانات تجريبية. ما يغيّره الزائر يُحفظ في متصفحه فقط حتى نهاية اليوم.",
   features: [
       "Searchable listings: sale/rent, type, district, price, beds, baths, area; filters travel in the URL",
       "District panel that highlights the matching pin and doubles as a filter",
